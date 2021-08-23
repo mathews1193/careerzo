@@ -8,11 +8,13 @@ import Profile from './containers/Profile';
 import Dashboard from './containers/Dashboard';
 import Messager from './containers/Messager';
 import './App.css';
+import Navbar from './components/NavBar/Navbar';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <div className='container'>
           <Route exact path="/" component={Home}/>
           <Route path="/signup"component={SignUp} />
