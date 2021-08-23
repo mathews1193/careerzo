@@ -12,7 +12,6 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>CareerZo</h1>
       <Router>
         <div className='container'>
           <Route exact path="/" component={Home}/>

@@ -1,10 +1,10 @@
 import React from 'react';
-import Pathway1 from '../components/CareerPathway/Pathway';
+import './Pathway.css';
 
 function Pathway() {
     return (
         <div>
-            <Pathway1 />
+            <h1>Career Pathway</h1>
         </div>
     )
 }

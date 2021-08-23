@@ -1,10 +1,10 @@
 import React from 'react';
-import Profile1 from '../components/Profile/Profile';
+import './Profile.css';
 
 function Profile() {
     return (
         <div>
-            <Profile1 />
+            <h1>Profile</h1>
         </div>
     )
 }

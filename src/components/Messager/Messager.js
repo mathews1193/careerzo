@@ -1,10 +1,10 @@
 import React from 'react';
-import Messager1 from '../components/Messager/Messager';
+import './Messager.css';
 
 function Messager() {
     return (
         <div>
-            <Messager1 />
+            <h1>Messager</h1>
         </div>
     )
 }

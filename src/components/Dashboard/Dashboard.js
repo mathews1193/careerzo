@@ -1,10 +1,10 @@
 import React from 'react';
-import Dashboard1 from '../components/Dashboard/Dashboard';
+import './Dashboard.css';
 
 function Dashboard() {
     return (
         <div>
-            <Dashboard1 />
+            <h1>Dashboard</h1>
         </div>
     )
 }
