@@ -4,7 +4,9 @@ import './Home.css';
 function Home() {
     return (
         <div>
-            <h1>Home</h1>
+            <div className="background">
+                <h1 className="title">CareerZo</h1>
+            </div>
         </div>
     )
 }

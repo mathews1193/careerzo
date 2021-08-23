@@ -1,0 +1,16 @@
+.background{
+    background-image: url('https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?cs=srgb&dl=pexels-quintin-gellar-313782.jpg&fm=jpg');
+    background-Position: center center;
+    height:100vh;
+    width:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    text-align: center;
+}
+
