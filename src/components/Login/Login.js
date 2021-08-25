@@ -5,20 +5,20 @@ import './Login.css';
 function Login() {
     return (
         <div>
-            <div className="background">
+            <div className="background4">
                 <div className="login">
-                    <h1 className="header">Sign In</h1>
+                    <h1 className="title">Sign In</h1>
                     <div className="input-form">
-                        <p className="user">Username</p>
                         <input
-                            className="input1"
-                            placeholder="Enter Username"
-                            type="text"/>
-                        <p className="p1">Password</p>
+                        className="input2"
+                        placeholder="Enter Username"
+                        type="text"
+                        />
                         <input
-                            className="input1"
-                            placeholder="Enter Password"
-                            type="password"/>
+                        className="input2"
+                        placeholder="Enter Password"
+                        type="password"
+                        />
                     </div>
                     <div className="btn-button">
                         <button className="btn-login" type="submit" >Login</button>

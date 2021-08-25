@@ -1,0 +1,125 @@
+.background4 {
+    font-size: 13px/20px;
+    font-family: Arial, Helvetica, sans-serif;
+  
+    color: #404040;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    background-image: url("https://images.pexels.com/photos/224924/pexels-photo-224924.jpeg?cs=srgb&dl=pexels-photomix-company-224924.jpg&fm=jpg");
+    background-Position: center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+  .title{
+    background-color: #313131;
+    border: 2px solid #eafa04e3;
+    color:#eafa04e3;
+    width:100%;
+  }
+  .p1{
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    position: relative; 
+    top: 60px;
+    right: 33%;
+    font-size: 30px;
+    font-weight:bold;
+  }
+  .login {
+    background-color:#333;
+    border: 4px solid #eafa04e3;
+    height:80%;
+    width: 56%;
+    margin:auto;
+  }
+  .input-form{
+    margin:auto;
+    padding-top:1%;
+    padding-right:5%
+  }
+  .input2{
+    display:inline;
+    width:82%;
+    padding:25px; 
+    margin-top:45px;
+    appearance:none;
+    border:black;
+    outline-color: rgb(175, 175, 216);
+    outline-width: 100px;
+    background-color: #cecece;
+    border-radius: 10px 10px 12px 12px;
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+    color:#313131;
+    font-size:25px;
+    transition: 0.4s ease;
+    align-content:center;
+  }
+  .btn-button {
+      padding:40px 0px;
+      margin-top: 20px;
+  }
+  .btn-button2 {
+    padding:10px 30px;
+    margin-top: -30px;
+    margin-left: 300px;
+  }
+  
+  .btn-login {
+    width:78%;
+    font-size:30px;
+    font-weight:600;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    background-color:#eafa04e3;
+    border-radius: 10px 10px 12px 12px;
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+    padding: 20px 20px;
+    margin-right: 60px;
+    margin-top: 20px;
+  }
+  .btn-create {
+    width:40%;
+    font-size:15px;
+    font-weight:600;
+    background-color:#eafa04e3;
+    border-radius: 5px 5px 6px 6px;
+    padding:10px 10px;
+   
+    margin-left: 240px;
+  }
+  
+  .login:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+  }
+  .login p:first-child {
+    margin-top: 0;
+  }
+  .login p.submit {
+    text-align: right;
+  }
+  
+  .login-help {
+    margin: 20px 0;
+    font-size: 11px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px #2a85a1;
+  }
+  
+  .login-help a {
+    color: #cce7fa;
+    text-decoration: none;
+  }
+  
+  .login-help a:hover {
+    text-decoration: underline;
+  }
