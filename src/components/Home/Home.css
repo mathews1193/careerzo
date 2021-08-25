@@ -1,7 +1,7 @@
 .background{
     background-image: url('https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?cs=srgb&dl=pexels-quintin-gellar-313782.jpg&fm=jpg');
     background-Position: center center;
-    height:100vh;
+    height:100%;
     width:100%;
     background-size:cover;
     background-repeat: no-repeat;
@@ -10,7 +10,23 @@
     flex-direction: column;
     align-items: center;
 }
-.title{
-    text-align: center;
+.text{
+    flex-direction: row;
 }
-
+.title-background{
+    padding: 0px 120px;
+}
+.sub-title1{
+    color:white;
+    background-color: #333;
+    border: 7px solid #eafa04e3;
+    border-radius: 10px;
+}
+.img1{
+    background-color: #eafa042f;
+    border: 7px solid black;
+    border-radius: 15px;
+    margin:auto 0;
+    margin-top:40px;
+    margin-bottom: 40px;
+}

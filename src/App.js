@@ -9,6 +9,7 @@ import Dashboard from './containers/Dashboard';
 import Messager from './containers/Messager';
 import './App.css';
 import Navbar from './components/NavBar/Navbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/dashboard"component={Dashboard} />
           <Route path="/messager"component={Messager} />
         </div>
+        <Footer />
       </Router>
     </div>
   );
