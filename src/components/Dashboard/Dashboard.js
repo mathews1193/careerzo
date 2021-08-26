@@ -9,7 +9,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Link } from "react-router-dom";
 
 function Dashboard() {
-    var user ="Sean John";
+    var user ="Steve Rogers";
     const percentage = 50;
     return (
         <div>

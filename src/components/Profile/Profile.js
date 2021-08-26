@@ -24,6 +24,15 @@ function Profile() {
                             name="fullName"
                             placeholder="Full Name"
                             />  
+                            
+                            <input
+                            className="form1"
+                            id="expertise-level"
+                            required
+                            type="text"
+                            name="expertise-level"
+                            placeholder="Expertise Level"
+                            />
 
                             <input
                             className="form1"
