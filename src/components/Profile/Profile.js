@@ -7,8 +7,8 @@ function Profile() {
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
     const [department, setDepartment] = useState("");
-
-    const createProfile = () =>{
+        
+    const createProfile = () => {
         firebase
         .firestore()
         .collection("employee")
@@ -31,7 +31,6 @@ function Profile() {
                     <div className="employee-form">
                         <input
                             className="form1"
-                            id="profilePic"
                             required
                             type="text"
                             placeholder="Profile Picture"
@@ -39,8 +38,8 @@ function Profile() {
 
                             <input
                             className="form1"
-                            id="fullName"
                             required
+                            value={name}
                             type="text"
                             placeholder="Full Name"
                             onChange={(e) => {
@@ -50,8 +49,8 @@ function Profile() {
                             
                             <input
                             className="form1"
-                            id="expertise-level"
                             required
+                            value={level}
                             type="text"
                             placeholder="Expertise Level"
                             onChange={(e) => {
@@ -61,8 +60,8 @@ function Profile() {
 
                             <input
                             className="form1"
-                            id="Current Position"
                             required
+                            value={position}
                             type="text"
                             placeholder="Current Position"
                             onChange={(e) => {
@@ -71,8 +70,8 @@ function Profile() {
                             />
                             <input
                             className="form1"
-                            id="Department"
                             required
+                            value={department}
                             type="text"
                             placeholder="Department"
                             onChange={(e) => {
