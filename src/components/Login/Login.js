@@ -1,8 +1,12 @@
-import React from 'react'
+import React,  { useState, useEffect }from 'react'
 import { Link } from "react-router-dom"
 import './Login.css';
 
 function Login() {
+    const [user,setUser] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    
     return (
         <div>
             <div className="background4">

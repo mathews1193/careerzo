@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState }from 'react';
+import firebase from '../../Firebase/firebase1';
 import './Profile.css';
 
 function Profile() {
+    const [name, setName] = useState("");
+    const [level, setLevel] = useState("");
+    const [position, setPosition] = useState("");
+    const [department, setDepartment] = useState("");
+
+    const createProfile = () =>{
+        firebase
+        .firestore()
+        .collection("employee")
+        .add({
+        name: name,
+        level: level,
+        department:department,
+        position: position,
+        })
+        .then(ref => {
+        console.log("Added document with ID: ", ref.id)
+        })
+    };
+
     return (
         <div>
             <div> 
@@ -13,16 +34,18 @@ function Profile() {
                             id="profilePic"
                             required
                             type="text"
-                            name="profilePic"
                             placeholder="Profile Picture"
                             /> 
+
                             <input
                             className="form1"
                             id="fullName"
                             required
                             type="text"
-                            name="fullName"
                             placeholder="Full Name"
+                            onChange={(e) => {
+                                setName(e.target.value);
+                            }}
                             />  
                             
                             <input
@@ -30,8 +53,10 @@ function Profile() {
                             id="expertise-level"
                             required
                             type="text"
-                            name="expertise-level"
                             placeholder="Expertise Level"
+                            onChange={(e) => {
+                                setLevel(e.target.value);
+                            }}
                             />
 
                             <input
@@ -39,20 +64,24 @@ function Profile() {
                             id="Current Position"
                             required
                             type="text"
-                            name="Current Position"
                             placeholder="Current Position"
+                            onChange={(e) => {
+                                setPosition(e.target.value);
+                            }}
                             />
                             <input
                             className="form1"
                             id="Department"
                             required
                             type="text"
-                            name="Department"
                             placeholder="Department"
+                            onChange={(e) => {
+                                setDepartment(e.target.value);
+                            }}
                             />
                             </div>
                             <div className="btn-container">
-                                <button className="btn-save">Create Profile</button>
+                                <button onClick={createProfile} className="btn-save">Create Profile</button>
                             </div>
                     </div>
                 </div>
