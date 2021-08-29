@@ -29,7 +29,7 @@ function Dashboard() {
 
                 <div className="options">
                     <div className="set1">
-                        <Link to="/certifications"><button className="btn-dash"><ListAltIcon style={{fontSize: 50}} /> Certifications
+                        <Link to="/certification"><button className="btn-dash"><ListAltIcon style={{fontSize: 50}} /> Certifications
                         </button> </Link>
                         <Link to="/career-pathway"><button className="btn-dash"><TransformIcon style={{fontSize: 50}}/>Career Pathway
                         </button> </Link>

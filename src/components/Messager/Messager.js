@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState} from 'react';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import firebase from '../../Firebase/firebase1';
 import './Messager.css';

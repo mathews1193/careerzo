@@ -1,12 +1,20 @@
 import React,  { useState, useEffect }from 'react'
-import { Link } from "react-router-dom"
 import './Login.css';
 
-function Login() {
-    const [user,setUser] = useState('');
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    
+function Login(props) {
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        handleLogin,
+        handleSignup,
+        hasAccount,
+        setHasAccount,
+        emailError,
+        passwordError,
+        } = props;
+
     return (
         <div>
             <div className="background4">
@@ -15,23 +23,39 @@ function Login() {
                     <div className="input-form">
                         <input
                         className="input2"
-                        placeholder="Enter Username"
+                        placeholder="Enter Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         type="text"
                         />
+
+                        <p className="errorMsg">{emailError}</p>
+
                         <input
                         className="input2"
                         placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         />
+                    {hasAccount ? (
+                      <>
+                      <button onClick={handleLogin}>Sign In</button>
+                      <p>Don't have an account? 
+                      <span onClick={() => setHasAccount(!hasAccount)}>Sign Up</span>
+                      </p>
+                      </>
+                      ) : (
+                        <>
+                        <button onClick={handleSignup}>Sign Up</button>
+                        <p>Have an Account? 
+                        <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span>
+                        </p>
+                        </>
+                  )}
+              </div>           
+                        <p className="errorMsg">{passwordError}</p>
                     </div>
-                    <div className="btn-button">
-                        <button className="btn-login" type="submit" >Login</button>
-                    </div>
-                    <div className="btn-button2">
-                        <Link to="/register"> <button className="btn-create" type="submit">Create an Account</button> </Link>
-                    </div>
-                </div>
-
             </div>
         </div>
     )

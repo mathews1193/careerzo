@@ -1,0 +1,30 @@
+.background7{
+    background-image: url('https://images.pexels.com/photos/1374295/pexels-photo-1374295.jpeg?cs=srgb&dl=pexels-brandon-montrone-1374295.jpg&fm=jpg');
+    background-Position:center center;
+    height:100vh;
+    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+}
+.input3{
+    display:inline;
+    width:50%;
+    padding:25px; 
+    margin: 0 auto;
+    margin-top:45px;
+    margin-bottom:20px;
+    appearance:none;
+    border:black;
+    outline-color: rgb(175, 175, 216);
+    outline-width: 100px;
+    background-color: #cecece;
+    border-radius: 10px 10px 12px 12px;
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+    color:#313131;
+    font-size:25px;
+    transition: 0.4s ease;
+    align-content:center;
+  }
