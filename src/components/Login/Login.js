@@ -19,7 +19,11 @@ function Login(props) {
         <div>
             <div className="background4">
                 <div className="login">
-                    <h1 className="title">Sign In</h1>
+                {hasAccount ? (
+                    <h1 className="title">Sign In</h1> 
+                ) : (
+                    <h1 className="title">Create An Account</h1>
+                ) }
                     <div className="input-form">
                         <input
                         className="input2"
@@ -38,24 +42,28 @@ function Login(props) {
                         onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         />
+
+                        <p className="errorMsg">{passwordError}</p>
+
                     {hasAccount ? (
-                      <>
-                      <button onClick={handleLogin}>Sign In</button>
-                      <p>Don't have an account? 
-                      <span onClick={() => setHasAccount(!hasAccount)}>Sign Up</span>
-                      </p>
-                      </>
-                      ) : (
-                        <>
-                        <button onClick={handleSignup}>Sign Up</button>
+                    
+                        <div className="btn-button">
+                            <button className="btn-login" onClick={handleLogin}>Sign In</button>
+                            <p>Don't have an account? 
+                            <span onClick={() => setHasAccount(!hasAccount)}>Sign Up</span>
+                            </p>
+                        </div>
+                    ) : (
+                        <div className="btn-button">
+                        <button className="btn-login" onClick={handleSignup}>Sign Up</button>
                         <p>Have an Account? 
                         <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span>
                         </p>
-                        </>
-                  )}
-              </div>           
-                        <p className="errorMsg">{passwordError}</p>
-                    </div>
+                        </div>
+                    )}
+                    </div>           
+                        
+                </div>
             </div>
         </div>
     )

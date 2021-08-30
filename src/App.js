@@ -3,7 +3,6 @@ import {BrowserRouter as Router,Route} from "react-router-dom";
 import firebase from './Firebase/firebase1';
 import Home from './containers/Home';
 import Login from './containers/Login';
-import SignUp from './containers/SignUp';
 import Pathway from './containers/Pathway';
 import Profile from './containers/Profile';
 import Dashboard from './containers/Dashboard';
@@ -118,7 +117,6 @@ useEffect(() =>{
           </Route>
 
           <Route path="/home" component={Home} />
-          <Route path="/signup"component={SignUp} />
           <Route path="/career-pathway"component={Pathway} />
           <Route path="/profile"component={Profile} />
           <Route path="/dashboard"component={Dashboard} />

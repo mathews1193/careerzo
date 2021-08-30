@@ -60,11 +60,6 @@
       padding:40px 0px;
       margin-top: 20px;
   }
-  .btn-button2 {
-    padding:10px 30px;
-    margin-top: -30px;
-    margin-left: 300px;
-  }
   
   .btn-login {
     width:78%;
@@ -78,48 +73,21 @@
     margin-right: 60px;
     margin-top: 20px;
   }
-  .btn-create {
-    width:40%;
-    font-size:15px;
-    font-weight:600;
-    background-color:#eafa04e3;
-    border-radius: 5px 5px 6px 6px;
-    padding:10px 10px;
-   
-    margin-left: 240px;
+  
+  .btn-button p span {
+    color: yellow;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
   }
   
-  .login:before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    bottom: -8px;
-    left: -8px;
-    z-index: -1;
-    background: rgba(0, 0, 0, 0.08);
-    border-radius: 4px;
-  }
-  .login p:first-child {
-    margin-top: 0;
-  }
-  .login p.submit {
-    text-align: right;
+  .btn-button p span:hover {
+    color: red;
   }
   
-  .login-help {
-    margin: 20px 0;
-    font-size: 11px;
-    color: white;
-    text-align: center;
-    text-shadow: 0 1px #2a85a1;
-  }
-  
-  .login-help a {
-    color: #cce7fa;
-    text-decoration: none;
-  }
-  
-  .login-help a:hover {
-    text-decoration: underline;
+  .login .input-form .errorMsg {
+    color: red;
+    font-size: 16px;
   }
