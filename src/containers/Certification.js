@@ -1,10 +1,10 @@
 import React from 'react';
 import Certification1 from '../components/Certification/Certification';
 
-function Certification() {
+function Certification(userId) {
     return (
         <div>
-            <Certification1 />
+            <Certification1 userId={userId} />
         </div>
     )
 }

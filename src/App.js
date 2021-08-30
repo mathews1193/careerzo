@@ -15,6 +15,7 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState('');
+  const [userId, setUserId] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -85,6 +86,7 @@ const authListener = () =>{
   firebase.auth().onAuthStateChanged((user) => {
     if(user){
       clearInputs();
+      setUserId(firebase.auth().currentUser.uid);
       setUser(user);
     }else {
       setUser('');
@@ -100,7 +102,8 @@ useEffect(() =>{
     <div className="App">
       <Router> 
         <Navbar handleLogout={handleLogout}/>
-        <div className='container'> 
+        <div className='container'>
+
           <Route exact path="/">
             <Login 
             email={email} 
@@ -116,12 +119,19 @@ useEffect(() =>{
             />
           </Route>
 
+          <Route path="/certification">
+            <Certification userId={userId} /> 
+          </Route>
+
+          <Route path="/profile">
+            <Profile userId={userId} /> 
+          </Route>
+
           <Route path="/home" component={Home} />
           <Route path="/career-pathway"component={Pathway} />
-          <Route path="/profile"component={Profile} />
           <Route path="/dashboard"component={Dashboard} />
           <Route path="/messager"component={Messager} />
-          <Route path="/certification"component={Certification} />
+         
           <Route path="/past-position"component={Positions} />
         </div>
         <Footer />

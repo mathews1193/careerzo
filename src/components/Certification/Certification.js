@@ -1,25 +1,44 @@
 import React, { useState } from 'react';
+import firebase from '../../Firebase/firebase1';
 import './Certification.css';
 
-function Certification() {
+function Certification( userId ) {
+
     const [file, setFile] = useState("");
+    const [issuer, setIssuer] = useState("");
+    const [label, setLabel] = useState("");
+
+    const saveFile = () => {
+        firebase
+        .firestore()
+        .collection("Certifications")
+        .add({
+        userId: userId,
+        Certification: label,
+        issuer: issuer,
+        file: file,
+        })
+        .then(ref => {
+        console.log("Added document with ID: ", ref.id)
+        })
+    }
+
     return (
         <div>
             <div className="background7">
                 <h1 className="title">Certifications</h1>
-
                 <input
                 className="input3"
                 placeholder="Certification Name"
-                value={file}
-                onChange={(e) => setFile(e.target.value)}
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
                 type="text"
                 />
                 <input
                 className="input3"
-                placeholder="Employee ID"
-                value={file}
-                onChange={(e) => setFile(e.target.value)}
+                placeholder="Issuer"
+                value={issuer}
+                onChange={(e) => setIssuer(e.target.value)}
                 type="text"
                 />
 
@@ -30,7 +49,7 @@ function Certification() {
                 type="file"
                 />
                 <div className="btn-container">
-                    <button className="btn-save">Upload File</button>
+                    <button onClick={saveFile}className="btn-save">Upload Document</button>
                 </div>
             </div>
         </div>

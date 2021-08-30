@@ -2,7 +2,7 @@ import React, { useState }from 'react';
 import firebase from '../../Firebase/firebase1';
 import './Profile.css';
 
-function Profile() {
+function Profile( userId ) {
     const [name, setName] = useState("");
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
@@ -13,6 +13,7 @@ function Profile() {
         .firestore()
         .collection("employee")
         .add({
+        userId: userId,
         name: name,
         level: level,
         department:department,
