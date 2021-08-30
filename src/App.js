@@ -15,11 +15,11 @@ import Positions from './containers/Positions';
 import './App.css';
 
 function App() {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [hasAccount, setHasAccount] = useState(false);
 
   // clears user input for email and password 
@@ -100,11 +100,25 @@ useEffect(() =>{
   return (
     <div className="App">
       <Router> 
-        <Navbar />
-        <div className='container'>
-          <Route exact path="/" component={Home}/>
+        <Navbar handleLogout={handleLogout}/>
+        <div className='container'> 
+          <Route exact path="/">
+            <Login 
+            email={email} 
+            setEmail={setEmail} 
+            password={password} 
+            setPassword={setPassword} 
+            handleLogin={handleLogin}
+            handleSignup={handleSignup}
+            hasAccount={hasAccount}
+            setHasAccount={setHasAccount}
+            emailError={emailError}
+            passwordError={passwordError} 
+            />
+          </Route>
+
+          <Route path="/home" component={Home} />
           <Route path="/signup"component={SignUp} />
-          <Route path="/login"component={Login} />
           <Route path="/career-pathway"component={Pathway} />
           <Route path="/profile"component={Profile} />
           <Route path="/dashboard"component={Dashboard} />
