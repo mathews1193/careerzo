@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react';
-import {BrowserRouter as Router,Route} from "react-router-dom";
+import {useHistory, BrowserRouter as Router,Route} from "react-router-dom";
 import firebase from './Firebase/firebase1';
 import Home from './containers/Home';
 import Login from './containers/Login';
@@ -11,7 +11,11 @@ import Navbar from './components/NavBar/Navbar';
 import Footer from './components/Footer/Footer';
 import Certification from './containers/Certification';
 import Positions from './containers/Positions';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import './App.css';
+
+toast.configure();
 
 function App() {
   const [user, setUser] = useState('');
@@ -21,6 +25,8 @@ function App() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [hasAccount, setHasAccount] = useState(false);
+
+const history = useHistory();
 
   // clears user input for email and password 
 const clearInputs = () =>{
@@ -52,6 +58,10 @@ const handleLogin = () =>{
               setPasswordError(err.message);
               break;
     }
+    history.push('/dashbaord');
+    toast.success("Login Successful!", {
+      theme:"colored"
+    });
   });
 };
 
@@ -72,12 +82,17 @@ const handleSignup = () =>{
               setPasswordError(err.message);
               break;
     }
+    toast.success("Account Created Successfully!", {
+      theme:"colored"
+    });
   });
 };
 
 //logout user 
 const handleLogout = () =>{
-  alert("Logging out now....");
+  toast.infor("Logging Out......",{
+    theme:"colored"
+  });
   firebase.auth().signOut();
 };
 

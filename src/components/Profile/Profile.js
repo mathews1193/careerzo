@@ -1,6 +1,10 @@
 import React, { useState }from 'react';
 import firebase from '../../Firebase/firebase1';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import './Profile.css';
+
+toast.configure();
 
 function Profile( userId ) {
     const [name, setName] = useState("");
@@ -21,6 +25,9 @@ function Profile( userId ) {
         })
         .then(ref => {
         console.log("Added document with ID: ", ref.id)
+        toast.success("Profile Created Successfully!", {
+            theme:"colored"
+        });
         })
     };
 
