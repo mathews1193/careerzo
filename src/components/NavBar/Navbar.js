@@ -13,8 +13,8 @@ function Navbar(handleLogout, auth) {
                 <ul className="list">
                     <Link to="/home" className="nav"><HomeIcon style={{fontSize: 35}} /> Home</Link>
                     <Link to="/dashboard" className="nav"><AccountCircleIcon style={{fontSize: 35}} /> Dashboard</Link>
-                    <Link to="/voice-assistant" className="nav"><MicIcon style={{fontSize: 35}} /> Voice Assistant</Link>
-                    <Link to="/profile" className="nav"><InfoIcon style={{fontSize: 35}} /> About Us</Link>
+                   <Link to="/profile" className="nav"><InfoIcon style={{fontSize: 35}} /> Profile</Link> 
+                   <Link to="/voice-assistant" className="nav"><MicIcon style={{fontSize: 35}} /> Voice Assistant</Link>
                     {auth ? (
                         <Link to="/"> <button className="btn-signin">Sign In</button> </Link>
                     ):(

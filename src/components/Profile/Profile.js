@@ -1,5 +1,6 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import firebase from '../../Firebase/firebase1';
+import { storage } from '../../Firebase/firebase1';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import './Profile.css';
@@ -7,10 +8,24 @@ import './Profile.css';
 toast.configure();
 
 function Profile( userId ) {
+    const[img, setImg]= useState(null);
     const [name, setName] = useState("");
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
     const [department, setDepartment] = useState("");
+    const [profile, setProile]= useState([]);
+
+    const ref = firebase.firestore().collection('employee').where("userId","==", userId);
+
+    const getProfile = () => {
+        ref.onSnapshot((querySnapshot) => {
+          const list = [];
+          querySnapshot.forEach((doc) => {
+            list.push(doc.data());
+          });
+          setProile(list);
+        });
+      };
         
     const createProfile = () => {
         firebase
@@ -31,17 +46,35 @@ function Profile( userId ) {
         })
     };
 
+    useEffect(() => {
+       getProfile();
+        // eslint-disable-next-line
+      }, []);
+
     return (
         <div>
             <div> 
                 <div className="background3">
                     <h1 className="title">Employee Profile</h1>
+                    {profile.map((p) => (
+                    <div className="profile">
+                        <h2>image</h2>
+                        <h2>{p.name}</h2>
+                        <h2>Level: {p.level}</h2>
+                        <h2>Department: {p.department}</h2>
+                        <h2>Position: {p.position}</h2>
+                    </div>
+                    ))};
                     <div className="employee-form">
                         <input
                             className="form1"
                             required
-                            type="text"
+                            value={img}
+                            type="file"
                             placeholder="Profile Picture"
+                            onChange={(e) => {
+                                setImg(e.target.files[0]);
+                            }}
                             /> 
 
                             <input

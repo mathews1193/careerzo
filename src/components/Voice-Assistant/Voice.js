@@ -58,12 +58,14 @@ function Voice() {
       <div className="background8"> 
       <h1>Voice Assistant</h1>
         <div className="form">
-          <h2>Active Note</h2>
+         
           <div className="mic">
             {isListening ? <span className="logo">🎙️🛑</span> : <span className="logo">🎙️</span>}
           </div>
-          <div className="btn-mic">
-            <p>{note}</p>
+          <div className="btn-mic"> 
+            <div className="note">
+              <p>{note}</p>
+            </div>
             <button className="btn-voice" onClick={handleSaveNote} disabled={!note}>
               Save Note
             </button> 
@@ -73,7 +75,7 @@ function Voice() {
           </div>
         </div>
         <div className="msg">
-          <h2>Saved Notes</h2>
+          <h2>Commands</h2>
           {savedNotes.map(n => (
             <p key={n}>{n}</p>
           ))}
