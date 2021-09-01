@@ -21,29 +21,31 @@
 .nav{
     color:white;
     text-decoration: none;
-    margin-left:30px;
+    margin-left:70px;
     float:left;
     display:block;
     padding: 30px;
 }
 .btn-signin {
     color:white;
+    width:10%;
     background-color:#333;
     border: 2px solid whitesmoke;
     float:left;
     display:block;
     margin-top:20px;
-    margin-left:30px;
+    margin-left:170px;
     padding: 20px;
 }
 .btn-register {
     color:white;
+    width:10%;
     background-color:#333;
     border: 2px solid whitesmoke;
     float:left;
     display:block;
     margin-top:20px;
-    margin-left:30px;
+    margin-left:50px;
     padding: 20px;
 }
 /* Change color of dropdown links on hover */

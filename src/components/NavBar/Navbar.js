@@ -1,18 +1,25 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import MicIcon from '@material-ui/icons/Mic';
+import InfoIcon from '@material-ui/icons/Info';
 import "./Navbar.css";
 
-function Navbar(handleLogout) {
+function Navbar(handleLogout, auth) {
     return (
         <div>
             <nav className="navbar">
                 <ul className="list">
-                    <Link to="/home" className="nav">Home</Link>
-                    <Link to="/dashboard" className="nav">Dashboard</Link>
-                    <Link to="/profile" className="nav">Profile</Link>
-                    <Link to="/messager" className="nav">Messager</Link>
-                    <Link to="/"> <button className="btn-signin">Sign In</button> </Link>
-                    <button onClick={handleLogout} className="btn-register">Sign Out</button>
+                    <Link to="/home" className="nav"><HomeIcon style={{fontSize: 35}} /> Home</Link>
+                    <Link to="/dashboard" className="nav"><AccountCircleIcon style={{fontSize: 35}} /> Dashboard</Link>
+                    <Link to="/voice-assistant" className="nav"><MicIcon style={{fontSize: 35}} /> Voice Assistant</Link>
+                    <Link to="/profile" className="nav"><InfoIcon style={{fontSize: 35}} /> About Us</Link>
+                    {auth ? (
+                        <Link to="/"> <button className="btn-signin">Sign In</button> </Link>
+                    ):(
+                        <button onClick={handleLogout} className="btn-register">Sign Out</button>
+                    )} 
                 </ul>
             </nav>
         </div>

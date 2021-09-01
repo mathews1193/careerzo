@@ -1,0 +1,77 @@
+.background8 {
+    font-size: 13px/20px;
+    font-family: Arial, Helvetica, sans-serif;
+  
+    color: #404040;
+    height:100vh;
+    align-items: center;
+  
+    background-image: url("https://images.pexels.com/photos/224924/pexels-photo-224924.jpeg?cs=srgb&dl=pexels-photomix-company-224924.jpg&fm=jpg");
+    background-Position: center center;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+  .mic{
+    display: flex;
+    flex-direction: row;
+  }
+  .form{
+    margin: 0px auto;
+  }
+  
+  .p{
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    position: relative; 
+    top: 60px;
+    right: 33%;
+    font-size: 30px;
+    font-weight:bold;
+  }
+  .msg{
+    display:block;
+    width: 40%;
+    padding:20px; 
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: left;
+   
+    appearance: none;
+    background: white;
+    border:none;
+    outline:none;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 0px 0px 16px 16px;
+   
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+  
+    color:#080808;
+    font-size:20px;
+  
+    transition: 0.4s ease;
+  }
+  .logo{
+    background-color: #333;
+    font-size: 100px;
+    border-radius:20%;
+    margin: 0 auto;
+    width:9%;
+    height:5%;
+  }
+  .btn-mic {
+   width:70%;
+   height:90%;
+   margin: 0 auto;
+  }
+  
+  .btn-voice { 
+    margin: 0 auto;
+    width:50%;
+    font-size:30px;
+    font-weight:600;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    border-radius: 10px 10px 12px 12px;
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+    padding: 20px 20px;
+    margin-top: 20px;
+  }

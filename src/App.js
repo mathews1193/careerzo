@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react';
-import {useHistory, BrowserRouter as Router,Route} from "react-router-dom";
+import {BrowserRouter as Router,Route} from "react-router-dom";
 import firebase from './Firebase/firebase1';
 import Home from './containers/Home';
 import Login from './containers/Login';
@@ -10,10 +10,11 @@ import Messager from './containers/Messager';
 import Navbar from './components/NavBar/Navbar';
 import Footer from './components/Footer/Footer';
 import Certification from './containers/Certification';
-import Positions from './containers/Positions';
+import View from './containers/View';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import './App.css';
+import Voice from './containers/Voice';
 
 toast.configure();
 
@@ -25,8 +26,7 @@ function App() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [hasAccount, setHasAccount] = useState(false);
-
-const history = useHistory();
+  const [auth, setAuth] = useState(false);
 
   // clears user input for email and password 
 const clearInputs = () =>{
@@ -58,10 +58,9 @@ const handleLogin = () =>{
               setPasswordError(err.message);
               break;
     }
-    history.push('/dashbaord');
-    toast.success("Login Successful!", {
-      theme:"colored"
-    });
+  });
+  toast.success("Login Successful!", {
+    theme:"colored"
   });
 };
 
@@ -82,10 +81,11 @@ const handleSignup = () =>{
               setPasswordError(err.message);
               break;
     }
-    toast.success("Account Created Successfully!", {
+   
+  }); 
+  toast.success("Account Created Successfully!", {
       theme:"colored"
     });
-  });
 };
 
 //logout user 
@@ -94,6 +94,7 @@ const handleLogout = () =>{
     theme:"colored"
   });
   firebase.auth().signOut();
+  setAuth(!auth);
 };
 
 // check to see if user is logged in 
@@ -116,7 +117,7 @@ useEffect(() =>{
   return (
     <div className="App">
       <Router> 
-        <Navbar handleLogout={handleLogout}/>
+        <Navbar auth={auth} handleLogout={handleLogout}/>
         <div className='container'>
 
           <Route exact path="/">
@@ -131,6 +132,8 @@ useEffect(() =>{
             setHasAccount={setHasAccount}
             emailError={emailError}
             passwordError={passwordError} 
+            auth={auth}
+            setAuth={setAuth}
             />
           </Route>
 
@@ -146,8 +149,8 @@ useEffect(() =>{
           <Route path="/career-pathway"component={Pathway} />
           <Route path="/dashboard"component={Dashboard} />
           <Route path="/messager"component={Messager} />
-         
-          <Route path="/past-position"component={Positions} />
+          <Route path="/voice-assistant" component={Voice} />
+          <Route path="/view-certification"component={View} />
         </div>
         <Footer />
       </Router>

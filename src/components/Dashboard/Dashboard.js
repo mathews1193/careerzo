@@ -29,13 +29,13 @@ function Dashboard() {
 
                 <div className="options">
                     <div className="set1">
-                        <Link to="/certification"><button className="btn-dash"><ListAltIcon style={{fontSize: 50}} /> Certifications
+                        <Link to="/certification"><button className="btn-dash"> <TransformIcon style={{fontSize: 50}}/> Add Certification
                         </button> </Link>
-                        <Link to="/career-pathway"><button className="btn-dash"><TransformIcon style={{fontSize: 50}}/>Career Pathway
+                        <Link to="/career-pathway"><button className="btn-dash"><TransferWithinAStationIcon style={{fontSize: 50}} /> Career Pathway
                         </button> </Link>
                     </div>
                     <div className="set1">
-                        <Link to="/positions"><button className="btn-dash"><TransferWithinAStationIcon style={{fontSize: 50}} />Past Positions
+                        <Link to="/view-certification"><button className="btn-dash"><ListAltIcon style={{fontSize: 50}} /> View Certifications
                         </button> </Link>
                         <Link to="/messager"><button className="btn-dash"><ChatIcon style={{fontSize: 50}} /> Messager
                         </button> </Link>
