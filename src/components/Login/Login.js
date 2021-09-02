@@ -20,7 +20,7 @@ function Login(props) {
             <div className="background4">
                 <div className="login">
                 {hasAccount ? (
-                    <h1 className="title">Sign In</h1> 
+                    <h1 className="title">Please Sign In</h1> 
                 ) : (
                     <h1 className="title">Create An Account</h1>
                 ) }

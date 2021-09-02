@@ -17,7 +17,6 @@ function Navbar(props) {
                     <Link to="/dashboard" className="nav"><AccountCircleIcon style={{fontSize: 35}} /> Dashboard</Link>
                     <Link to="/profile" className="nav"><InfoIcon style={{fontSize: 35}} /> Profile</Link> 
                     <Link to="/voice-assistant" className="nav"><MicIcon style={{fontSize: 35}} /> Voice Assistant</Link>
-                    <Link to="/login"> <button className="btn-signin">Sign In</button> </Link>
                     <button onClick={handleLogout} className="btn-register">Sign Out</button>
                 </ul>
             </nav>

@@ -8,13 +8,16 @@ import './Profile.css';
 toast.configure();
 
 function Profile( userId ) {
-    const[img, setImg]= useState(null);
+    const [image, setImage]= useState(null);
     const [name, setName] = useState("");
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
     const [department, setDepartment] = useState("");
-    const[percentage, setPercentage] = useState();
+    const [percentage, setPercentage] = useState(0);
     const [profile, setProile]= useState([]);
+
+    const [url, setUrl] = useState("");
+    const [progress, setProgress] = useState(0);
 
     const ref = firebase.firestore().collection('employee').where("userId","==", userId);
 
@@ -27,12 +30,42 @@ function Profile( userId ) {
           setProile(list);
         });
       };
+
+    const handleChange = e => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+    };
         
     const createProfile = () => {
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+        "state_changed",
+        snapshot => {
+            const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(progress);
+        },
+        error => {
+            console.log(error);
+        },
+        () => {
+            storage
+            .ref("images")
+            .child(image.name)
+            .getDownloadURL()
+            .then(url => {
+                setUrl(url);
+            });
+        }
+        );
+
         firebase
         .firestore()
         .collection("employee")
         .add({
+        pic: url,
         userId: userId,
         name: name,
         level: level,
@@ -53,6 +86,8 @@ function Profile( userId ) {
         // eslint-disable-next-line
       }, []);
 
+      console.log("image: ", image);
+
     return (
         <div>
             <div> 
@@ -60,7 +95,7 @@ function Profile( userId ) {
                     <h1 className="title">Employee Profile</h1>
                     {profile.map((p) => (
                     <div className="profile">
-                        <h2>image</h2>
+                        <img className="pic" src={p.pic|| "http://via.placeholder.com/300"} alt="profile-pic" />
                         <h2>{p.name}</h2>
                         <h2>Level: {p.level}</h2>
                         <h2>Department: {p.department}</h2>
@@ -68,15 +103,13 @@ function Profile( userId ) {
                     </div>
                     ))};
                     <div className="employee-form">
+                        <progress value={progress} max="100" />
                         <input
                             className="form1"
                             required
-                            value={img}
                             type="file"
                             placeholder="Profile Picture"
-                            onChange={(e) => {
-                                setImg(e.target.files[0]);
-                            }}
+                            onChange={handleChange}
                             /> 
 
                             <input

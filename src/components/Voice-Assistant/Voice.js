@@ -56,7 +56,7 @@ function Voice() {
     <>
      
       <div className="background8"> 
-      <h1>Voice Assistant</h1>
+      <h1 className="title">Voice Assistant</h1>
         <div className="form">
          
           <div className="mic">

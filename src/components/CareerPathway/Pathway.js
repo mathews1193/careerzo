@@ -8,10 +8,6 @@ function Pathway(userId) {
 
     const [employee, setEmployee] = useState([]);
 
-    const img = [
-        'https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    ]; 
-
     const ref = firebase.firestore().collection('employee').where("userId","==", userId);
 
     const getEmployee = () => {
@@ -34,7 +30,7 @@ function Pathway(userId) {
             {employee.map((e) => (
             <div className="background5">
                 <h1 className="title">Career Pathway: {e.name}</h1>
-                <img src={img[0]} alt="Logo" width="23%" height="30%"/>
+                <img src={e.pic} alt="Logo" width="23%" height="30%"/>
                 <div className="path-infor">
                     <h2 className="head">Current Level: {e.level} Level {e.position}</h2>
                     <h2 className="head">Promotion Requirements: Not Meet</h2>

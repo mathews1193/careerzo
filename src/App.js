@@ -120,7 +120,7 @@ useEffect(() =>{
         {user ? (
           <div>
           <div className='container'>
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/messager"component={Messager} />
             <Route path="/voice-assistant" component={Voice} />
             <Route path="/view-certification"component={View} />
