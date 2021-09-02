@@ -4,7 +4,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import './Pathway.css';
 
-function Pathway() {
+function Pathway(userId) {
 
     const [employee, setEmployee] = useState([]);
 
@@ -12,7 +12,7 @@ function Pathway() {
         'https://images.pexels.com/photos/8005397/pexels-photo-8005397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     ]; 
 
-    const ref = firebase.firestore().collection('employee');
+    const ref = firebase.firestore().collection('employee').where("userId","==", userId);
 
     const getEmployee = () => {
         ref.onSnapshot((querySnapshot) => {
@@ -41,7 +41,7 @@ function Pathway() {
                 </div>
 
                 <ProgressBar 
-                completed={45}
+                completed={e.percentage}
                 bgColor={'#eafa04e3'}
                 labelColor={'black'}
                 height={'110%'}

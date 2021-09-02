@@ -13,6 +13,7 @@ function Profile( userId ) {
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
     const [department, setDepartment] = useState("");
+    const[percentage, setPercentage] = useState();
     const [profile, setProile]= useState([]);
 
     const ref = firebase.firestore().collection('employee').where("userId","==", userId);
@@ -36,6 +37,7 @@ function Profile( userId ) {
         name: name,
         level: level,
         department:department,
+        percentage:percentage,
         position: position,
         })
         .then(ref => {

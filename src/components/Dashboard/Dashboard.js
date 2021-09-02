@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Dashboard.css';
+import firebase from '../../Firebase/firebase1';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import ChatIcon from '@material-ui/icons/Chat';
 import TransformIcon from '@material-ui/icons/Transform';
@@ -8,24 +9,42 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from "react-router-dom";
 
-function Dashboard() {
-    var user ="Steve Rogers";
-    const percentage = 50;
+function Dashboard(userId) {
+    const [employee, setEmployee] = useState([]);
+
+    const ref = firebase.firestore().collection('employee').where("userId","==", userId);
+
+    const getEmployee = () => {
+        ref.onSnapshot((querySnapshot) => {
+          const list = [];
+          querySnapshot.forEach((doc) => {
+            list.push(doc.data());
+          });
+          setEmployee(list);
+        });
+      };
+
+      useEffect(() => {
+        getEmployee();
+        // eslint-disable-next-line
+      }, []);
     return (
         <div>
+            {employee.map((e) => (
             <div className="background1">
-                <h1 className="header">Welcome, {user}</h1>
+                <h1 className="header">Welcome, {e.name}</h1>
                 <div className="progress">
                     <CircularProgressbar 
-                    value={percentage} 
-                    text={`${percentage}%`} 
+                    value={e.percentage} 
+                    text={`${e.percentage}%`} 
                     styles={buildStyles({
-                        pathColor: `rgba(224, 224, 78, 0.9, ${percentage / 100})`,
+                        pathColor: `rgba(244, 252, 0, ${e.percentage / 100})`,
                         textColor: '#eafa04e3',
                         trailColor: '#d6d6d6',
                         backgroundColor: '#3e98c7',
                       })}/>
                 </div>
+               
 
                 <div className="options">
                     <div className="set1">
@@ -42,7 +61,8 @@ function Dashboard() {
                     </div>
                 </div>
                 
-            </div>
+            </div> 
+            ))};
         </div>
     )
 }

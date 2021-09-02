@@ -90,11 +90,10 @@ const handleSignup = () =>{
 
 //logout user 
 const handleLogout = () =>{
-  toast.infor("Logging Out......",{
+  firebase.auth().signOut(); 
+  toast.success("Logging Out......",{
     theme:"colored"
   });
-  firebase.auth().signOut();
-  setAuth(!auth);
 };
 
 // check to see if user is logged in 
@@ -117,41 +116,48 @@ useEffect(() =>{
   return (
     <div className="App">
       <Router> 
-        <Navbar auth={auth} handleLogout={handleLogout}/>
-        <div className='container'>
+        <Navbar user={user} handleLogout={handleLogout} />
+        {user ? (
+          <div>
+          <div className='container'>
+            <Route path="/" component={Home} />
+            <Route path="/messager"component={Messager} />
+            <Route path="/voice-assistant" component={Voice} />
+            <Route path="/view-certification"component={View} />
 
-          <Route exact path="/">
-            <Login 
-            email={email} 
-            setEmail={setEmail} 
-            password={password} 
-            setPassword={setPassword} 
-            handleLogin={handleLogin}
-            handleSignup={handleSignup}
-            hasAccount={hasAccount}
-            setHasAccount={setHasAccount}
-            emailError={emailError}
-            passwordError={passwordError} 
-            auth={auth}
-            setAuth={setAuth}
-            />
-          </Route>
+            <Route path="/certification">
+              <Certification userId={userId} /> 
+            </Route>
 
-          <Route path="/certification">
-            <Certification userId={userId} /> 
-          </Route>
+            <Route path="/profile">
+              <Profile userId={userId} /> 
+            </Route>
+            
+            <Route path="/career-pathway">
+                <Pathway userId={userId} />
+            </Route>
 
-          <Route path="/profile">
-            <Profile userId={userId} /> 
-          </Route>
-
-          <Route path="/home" component={Home} />
-          <Route path="/career-pathway"component={Pathway} />
-          <Route path="/dashboard"component={Dashboard} />
-          <Route path="/messager"component={Messager} />
-          <Route path="/voice-assistant" component={Voice} />
-          <Route path="/view-certification"component={View} />
+            <Route path="/dashboard"> 
+              <Dashboard userId={userId} />
+            </Route>
         </div>
+      </div>
+        ) : (
+          <div className='container'>
+              <Login 
+              email={email} 
+              setEmail={setEmail} 
+              password={password} 
+              setPassword={setPassword} 
+              handleLogin={handleLogin}
+              handleSignup={handleSignup}
+              hasAccount={hasAccount}
+              setHasAccount={setHasAccount}
+              emailError={emailError}
+              passwordError={passwordError} 
+              />
+          </div>
+        )}
         <Footer />
       </Router>
     </div>
