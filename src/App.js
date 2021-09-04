@@ -121,10 +121,16 @@ useEffect(() =>{
           <div>
           <div className='container'>
             <Route exact path="/" component={Home} />
-            <Route path="/messager"component={Messager} />
             <Route path="/voice-assistant" component={Voice} />
-            <Route path="/view-certification"component={View} />
 
+            <Route path="/messager">
+              <Messager userId={userId} />
+            </Route>
+
+            <Route path="/view-certification">
+              <View userId={userId} />
+            </Route>
+            
             <Route path="/certification">
               <Certification userId={userId} /> 
             </Route>

@@ -9,6 +9,13 @@
     display: flex;
     flex-direction: column;
 }
+.pic1{
+    width:25%;
+    height:35%;
+    margin-left: 10px;
+    border-radius: 10%;
+    border: 4px groove #eafa04e3;
+}
 .path-infor{
     border: 2px solid#eafa04e3; 
     background-color: #333;

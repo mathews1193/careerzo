@@ -30,7 +30,7 @@ function Pathway(userId) {
             {employee.map((e) => (
             <div className="background5">
                 <h1 className="title">Career Pathway: {e.name}</h1>
-                <img src={e.pic} alt="Logo" width="23%" height="30%"/>
+                <img className="pic1" src={e.pic} alt="Logo" width="23%" height="30%"/>
                 <div className="path-infor">
                     <h2 className="head">Current Level: {e.level} Level {e.position}</h2>
                     <h2 className="head">Promotion Requirements: Not Meet</h2>

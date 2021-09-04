@@ -25,8 +25,9 @@ function Messages()
     return (
         <div>
             {messageList.map((m) => (
-                <div> 
-                    <p>From: {m.from} {m.msg} @{m.to}</p>
+                <div className="msg1"> 
+                    <p className="From">From: {m.from} To: {m.to} </p> 
+                    <p>{m.msg}</p>
                 </div> 
             ))}  
         </div>

@@ -1,15 +1,35 @@
-import React,{ useState} from 'react';
+import React,{ useState, useEffect} from 'react';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import firebase from '../../Firebase/firebase1';
 import './Messager.css';
 import Messages from './Messages';
 
-function Messager() {
+function Messager(userId) {
     const [message, setMessage] = useState("");
     const [to, setTo] = useState("");
     const [from, setFrom] = useState("");
+    const [profile, setProile]= useState([]);
+
+
+    const ref = firebase.firestore().collection('employee').where("userId","==", userId);
+
+    const getProfile = () => {
+        ref.onSnapshot((querySnapshot) => {
+          const list = [];
+          querySnapshot.forEach((doc) => {
+            list.push(doc.data());
+          });
+          setProile(list);
+        });
+      };
 
     const createMsg = () => {
+        <>
+            {profile.map((p) => (
+                setFrom(p.name)
+            ))};
+        </>
+
         firebase
         .firestore()
         .collection("messages")
@@ -23,6 +43,11 @@ function Messager() {
         })
     };
 
+    useEffect(() => {
+        getProfile();
+         // eslint-disable-next-line
+       }, []);
+
     return (
         <div>
             <div className="background6">
@@ -30,18 +55,7 @@ function Messager() {
                 <div className="form1">
                      <Messages />
                 </div>
-               
 
-                <input
-                className="form1"
-                required
-                value={from}
-                type="text"
-                placeholder="From"
-                onChange={(e) => {
-                setFrom(e.target.value);
-                }}
-                />  
                 <input
                 className="form1"
                 required
@@ -51,7 +65,8 @@ function Messager() {
                 onChange={(e) => {
                 setTo(e.target.value);
                 }}
-                />  
+                /> 
+                 
                 <input
                 className="form1"
                 required
