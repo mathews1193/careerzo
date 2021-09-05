@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import firebase from '../../Firebase/firebase1';
 import { storage } from '../../Firebase/firebase1'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import './Certification.css';
+
+toast.configure();
 
 function Certification( userId ) {
 
@@ -42,6 +46,7 @@ function Certification( userId ) {
             });
         }
         );
+        console.log(url);
 
         firebase
         .firestore()
@@ -54,13 +59,18 @@ function Certification( userId ) {
         })
         .then(ref => {
         console.log("Added document with ID: ", ref.id)
+        toast.success("Document Uploaded Successfully!", {
+            theme:"colored"
+        });
         })
-    }
+    };
 
     return (
         <div>
             <div className="background7">
                 <h1 className="title">Certifications</h1>
+                <progress value={progress} max="100" />
+
                 <input
                 className="input3"
                 placeholder="Certification Name"
@@ -78,6 +88,8 @@ function Certification( userId ) {
 
                 <input
                 className="input3"
+                required
+                placeholder="Document"
                 onChange={handleChange}
                 type="file"
                 />

@@ -30,6 +30,7 @@ function View(userId) {
                     <div> 
                         <h1>{d.label}</h1>
                         <h1>{d.issuer}</h1>
+                        <h1>{d.file}</h1>
                     </div>
             ))};
             </div>

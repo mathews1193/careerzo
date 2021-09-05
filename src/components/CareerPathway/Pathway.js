@@ -33,9 +33,13 @@ function Pathway(userId) {
                 <img className="pic1" src={e.pic} alt="Logo" width="23%" height="30%"/>
                 <div className="path-infor">
                     <h2 className="head">Current Level: {e.level} Level {e.position}</h2>
-                    <h2 className="head">Promotion Requirements: Not Meet</h2>
-                </div>
-
+                    { e.percentage === 100 ? (
+                    <h2 className="head">Promotion Requirements: Met</h2>
+                    ) : (
+                    <h2 className="head">Promotion Requirements: Not Met</h2>
+               
+                    )}
+                    </div>
                 <ProgressBar 
                 completed={e.percentage}
                 bgColor={'#eafa04e3'}
