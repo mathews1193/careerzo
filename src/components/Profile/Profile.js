@@ -1,6 +1,8 @@
 import React, { useState, useEffect }from 'react';
 import firebase from '../../Firebase/firebase1';
 import { storage } from '../../Firebase/firebase1';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import './Profile.css';
@@ -14,7 +16,9 @@ function Profile( userId ) {
     const [position, setPosition] = useState("");
     const [department, setDepartment] = useState("");
     const [percentage, setPercentage] = useState(0);
+    const [experience, setExperience] = useState(0);
     const [profile, setProile]= useState([]);
+    const [startDate, setStartDate] = useState(new Date());
 
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
@@ -55,30 +59,33 @@ function Profile( userId ) {
             .ref("images")
             .child(image.name)
             .getDownloadURL()
-            .then(url => {
+            .then(url => { 
+                console.log(url);
                 setUrl(url);
+
+                firebase
+                .firestore()
+                .collection("employee")
+                .add({
+                pic: url,
+                userId: userId,
+                name: name,
+                level: level,
+                experience:experience,
+                department:department,
+                percentage:percentage,
+                position: position,
+                })
+                .then(ref => {
+                console.log("Added document with ID: ", ref.id)
+                toast.success("Profile Created Successfully!", {
+                    theme:"colored"
+                });
+                })
             });
         }
+        
         );
-
-        firebase
-        .firestore()
-        .collection("employee")
-        .add({
-        pic: url,
-        userId: userId,
-        name: name,
-        level: level,
-        department:department,
-        percentage:percentage,
-        position: position,
-        })
-        .then(ref => {
-        console.log("Added document with ID: ", ref.id)
-        toast.success("Profile Created Successfully!", {
-            theme:"colored"
-        });
-        })
     };
 
     useEffect(() => {
@@ -98,6 +105,7 @@ function Profile( userId ) {
                         <img className="pic" src={p.pic|| "http://via.placeholder.com/300"} alt="profile-pic" />
                         <h2>{p.name}</h2>
                         <h2>Level: {p.level}</h2>
+                        <h2>Years of Experience: {p.experience} </h2>
                         <h2>Department: {p.department}</h2>
                         <h2>Position: {p.position}</h2>
                     </div>
@@ -153,6 +161,13 @@ function Profile( userId ) {
                             onChange={(e) => {
                                 setDepartment(e.target.value);
                             }}
+                            />
+                            
+                            <DatePicker
+                            className="form1"
+                            selected={startDate}
+                            placeholder={"Start Date"}
+                            onChange={(date) => setStartDate(date)}
                             />
                             </div>
                             <div className="btn-container">

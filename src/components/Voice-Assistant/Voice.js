@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import firebase from '../../Firebase/firebase1';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Voice.css'
+
+toast.configure();
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const mic = new SpeechRecognition()
@@ -8,14 +13,30 @@ mic.continuous = true
 mic.interimResults = true
 mic.lang = 'en-US'
 
-function Voice() {
+function Voice(userId) {
   const [isListening, setIsListening] = useState(false)
   const [note, setNote] = useState(null)
   const [savedNotes, setSavedNotes] = useState([])
+  const [result, setResult] = useState()
+
+  const [employee, setEmployee]= useState([]);
+
+  const ref = firebase.firestore().collection('employee').where("userId","==", userId);
 
   useEffect(() => {
-    handleListen()
+    handleListen();
+    getEmployee();
   }, [isListening])
+
+  const getEmployee = () => {
+    ref.onSnapshot((querySnapshot) => {
+      const list = [];
+      querySnapshot.forEach((doc) => {
+        list.push(doc.data());
+      });
+      setEmployee(list);
+    });
+  };
 
   const handleListen = () => {
     if (isListening) {
@@ -39,13 +60,42 @@ function Voice() {
         .map(result => result[0])
         .map(result => result.transcript)
         .join('')
-      console.log(transcript)
+      console.log(transcript);
       setNote(transcript)
       mic.onerror = event => {
         console.log(event.error)
       }
+      checkTranscript (transcript);
     }
   }
+
+  const checkTranscript = e => {
+    if ( e ==="check position") {
+      checkPosition();
+    }
+    else if (e === "check progress") {
+      checkProgress();
+    }
+  }
+  const checkPosition = () => {
+    { employee.map((v) => (
+        setResult(v.position)
+    ))};
+
+    toast.success("Found Position for Selected Employee! ", {
+      theme:"colored"
+  });
+  };
+
+  const checkProgress = () => {
+    { employee.map((v) => (     
+      setResult(v.percentage)
+      ))};
+
+      toast.success("Found Progress Status for Selected Employee!", {
+        theme:"colored"
+    });
+  };
 
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
@@ -67,7 +117,7 @@ function Voice() {
               <p>{note}</p>
             </div>
             <button className="btn-voice" onClick={handleSaveNote} disabled={!note}>
-              Save Note
+              Save Input
             </button> 
             <button className="btn-voice" onClick={() => setIsListening(prevState => !prevState)}>
               Start/Stop
@@ -75,9 +125,12 @@ function Voice() {
           </div>
         </div>
         <div className="msg">
-          <h2>Commands</h2>
+          <h2>Results</h2>
           {savedNotes.map(n => (
+            <div>
             <p key={n}>{n}</p>
+            <p>{result}</p>
+            </div>
           ))}
         </div>
       </div>

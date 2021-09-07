@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import DocViewer from "react-doc-viewer";
 import './View.css';
 import firebase from '../../Firebase/firebase1';
 
@@ -28,9 +29,7 @@ function View(userId) {
             <div className="background9">
                 {document.map((d) => (
                     <div> 
-                        <h1>{d.label}</h1>
-                        <h1>{d.issuer}</h1>
-                        <h1>{d.file}</h1>
+                        <DocViewer documents={document} />
                     </div>
             ))};
             </div>

@@ -43,26 +43,25 @@ function Certification( userId ) {
             .getDownloadURL()
             .then(url => {
                 setUrl(url);
+
+                firebase
+                .firestore()
+                .collection("Certifications")
+                .add({
+                userId: userId,
+                Certification: label,
+                issuer: issuer,
+                file: url,
+                })
+                .then(ref => {
+                console.log("Added document with ID: ", ref.id)
+                toast.success("Document Uploaded Successfully!", {
+                    theme:"colored"
+                    });
+                })
             });
         }
         );
-        console.log(url);
-
-        firebase
-        .firestore()
-        .collection("Certifications")
-        .add({
-        userId: userId,
-        Certification: label,
-        issuer: issuer,
-        file: url,
-        })
-        .then(ref => {
-        console.log("Added document with ID: ", ref.id)
-        toast.success("Document Uploaded Successfully!", {
-            theme:"colored"
-        });
-        })
     };
 
     return (

@@ -121,7 +121,10 @@ useEffect(() =>{
           <div>
           <div className='container'>
             <Route exact path="/" component={Home} />
-            <Route path="/voice-assistant" component={Voice} />
+            
+            <Route path="/voice-assistant">
+               <Voice userId={userId} />
+            </Route>
 
             <Route path="/messager">
               <Messager userId={userId} />
