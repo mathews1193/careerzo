@@ -5,3 +5,39 @@
     background-size:cover;
     background-repeat: no-repeat;
   }
+  .doc-pic{
+    width:50%;
+    height:50%;
+  }
+  .doc-title{
+    text-align: center;
+    background-color: #313131;
+    color:white;
+    width:100%;
+  }
+  .doc{
+    display:block;
+    width: 63%;
+    height:56%;
+    padding:20px; 
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+   
+    appearance: none;
+    background: white;
+    border: 3px solid #333;
+    outline:none;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 0px 0px 16px 16px;
+    box-shadow: 0px 5px rgba(0,0,0,0.2);
+  
+    color:#080808;
+    font-size:20px;
+  
+    transition: 0.4s ease;
+  }
+  .doc-link{
+    text-align: left;
+  }

@@ -49,7 +49,7 @@ function Certification( userId ) {
                 .collection("Certifications")
                 .add({
                 userId: userId,
-                Certification: label,
+                certification: label,
                 issuer: issuer,
                 file: url,
                 })
