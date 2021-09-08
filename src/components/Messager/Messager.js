@@ -1,8 +1,12 @@
 import React,{ useState, useEffect} from 'react';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import firebase from '../../Firebase/firebase1';
 import './Messager.css';
 import Messages from './Messages';
+
+toast.configure();
 
 function Messager(userId) {
     const [message, setMessage] = useState("");
@@ -24,22 +28,26 @@ function Messager(userId) {
       };
 
     const createMsg = () => {
-        <>
-            {profile.map((p) => (
-                setFrom(p.name)
-            ))};
-        </>
+
+        {profile.map((p) => (
+            setFrom(p.name)
+        ))};
 
         firebase
         .firestore()
         .collection("messages")
         .add({
+        userId: userId,
         msg: message,
         to: to,
         from:from,
         })
         .then(ref => {
         console.log("Added document with ID: ", ref.id)
+
+        toast.success("Message Sent Successful!", {
+            theme:"colored"
+        });
         })
     };
 
@@ -53,7 +61,7 @@ function Messager(userId) {
             <div className="background6">
                 <h1 className="title">Message Board</h1>
                 <div className="form1">
-                     <Messages />
+                     <Messages userId={userId} />
                 </div>
 
                 <input

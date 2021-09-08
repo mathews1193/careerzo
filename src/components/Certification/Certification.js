@@ -68,7 +68,7 @@ function Certification( userId ) {
         <div>
             <div className="background7">
                 <h1 className="title">Certifications</h1>
-                <progress value={progress} max="100" />
+                
 
                 <input
                 className="input3"
@@ -92,6 +92,9 @@ function Certification( userId ) {
                 onChange={handleChange}
                 type="file"
                 />
+                
+                <progress value={progress} max="100" />
+
                 <div className="btn-container">
                     <button onClick={saveFile}className="btn-save">Upload Document</button>
                 </div>

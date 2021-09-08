@@ -16,10 +16,9 @@ function Profile( userId ) {
     const [position, setPosition] = useState("");
     const [department, setDepartment] = useState("");
     const [percentage, setPercentage] = useState(0);
-    const [experience, setExperience] = useState(0);
+    const [experience, setExperience] = useState();
     const [profile, setProile]= useState([]);
-    const [startDate, setStartDate] = useState(new Date());
-
+   
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
 
@@ -162,13 +161,18 @@ function Profile( userId ) {
                                 setDepartment(e.target.value);
                             }}
                             />
-                            
-                            <DatePicker
+
+                            <input
                             className="form1"
-                            selected={startDate}
-                            placeholder={"Start Date"}
-                            onChange={(date) => setStartDate(date)}
+                            required
+                            value={experience}
+                            type="text"
+                            placeholder="Years of Experience"
+                            onChange={(e) => {
+                                setExperience(e.target.value);
+                            }}
                             />
+
                             </div>
                             <div className="btn-container">
                                 <button onClick={createProfile} className="btn-save">Create Profile</button>

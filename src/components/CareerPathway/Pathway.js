@@ -32,7 +32,7 @@ function Pathway(userId) {
                 <h1 className="title">Career Pathway: {e.name}</h1>
                 <img className="pic1" src={e.pic} alt="Logo" width="23%" height="30%"/>
                 <div className="path-infor">
-                    <h2 className="head">Current Level: {e.level} Level {e.position}</h2>
+                    <h2 className="head">Current Level: {e.level}-Level {e.position}</h2>
                     { e.percentage === 100 ? (
                     <h2 className="head">Promotion Requirements: Met</h2>
                     ) : (
@@ -51,24 +51,30 @@ function Pathway(userId) {
 
                 { e.level === "Entry" ? (
                 <div className="level">
-                    <h2 className="head">Entry Level {e.position}</h2> 
-                    <h2 className="head">Mid Level {e.position}</h2>
-                    <h2 className="head">Next Level Promotion</h2>
-                    <h2 className="head">Senior Level {e.position}</h2>
-                    <p className="head">Reach Mid Level Position First!</p> 
+                    <h2 className="head">Entry-Level {e.position}</h2> 
+                    <p className="sub-head">0-5 Years of Experience</p>
+                    <p className="sub-head">OSHA Certification</p>
+                    <p className="sub-head">Trade Certification / Degree (2 or 4 yrs)</p>
+                    
                 </div>
                 ) : ( e.level === "Mid") ? (
                 <div className="level">
-                    <h2 className="head"> <AssignmentTurnedInIcon /> Entry Level {e.position}</h2> 
-                    <h2 className="head">Mid Level {e.position}</h2>
-                    <h2 className="head">Senior Level {e.position}</h2>
-                    <p className="head">Next Level Promotion!</p>
+                    <h2 className="head"> <AssignmentTurnedInIcon /> Entry-Level {e.position}</h2> 
+                    <h2 className="head">Mid-Level {e.position}</h2>
+                    <p className="sub-head">5-7 Years of Experience</p>
+                    <p className="sub-head">OSHA Certification</p>
+                    <p className="sub-head">Trade Certification</p>
+                    <p className="sub-head">Degree (2 or 4 yrs)</p>
                 </div>
                 ) : (
                 <div className="level">
-                    <h2 className="head"><AssignmentTurnedInIcon /> Entry Level {e.position}</h2> 
-                    <h2 className="head"><AssignmentTurnedInIcon /> Mid Level {e.position}</h2>
-                    <h2 className="head">Senior Level {e.position}</h2>
+                    <h2 className="head"><AssignmentTurnedInIcon /> Entry-Level {e.position}</h2> 
+                    <h2 className="head"><AssignmentTurnedInIcon /> Mid-Level {e.position}</h2>
+                    <h2 className="head">Senior-Level {e.position}</h2>
+                    <p className="sub-head">7-Up Years of Experience</p>
+                    <p className="sub-head">OSHA Certification</p>
+                    <p className="sub-head">Trade Certification</p>
+                    <p className="sub-head">Degree (2 or 4 yrs)</p>
                 </div>
                 )}
             </div>

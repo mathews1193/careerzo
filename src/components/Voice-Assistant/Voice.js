@@ -72,9 +72,12 @@ function Voice(userId) {
   const checkTranscript = e => {
     if ( e ==="check position") {
       checkPosition();
-    }
-    else if (e === "check progress") {
+    } else if (e === "check progress") {
       checkProgress();
+    } else if (e === "find department") {
+      findDepartment();
+    } else if (e === "check for next promotion"){
+      checkPromotion();
     }
   }
   const checkPosition = () => {
@@ -84,7 +87,7 @@ function Voice(userId) {
 
     toast.success("Found Position for Selected Employee! ", {
       theme:"colored"
-  });
+    });
   };
 
   const checkProgress = () => {
@@ -96,6 +99,32 @@ function Voice(userId) {
         theme:"colored"
     });
   };
+
+  const findDepartment = () => {
+    { employee.map((v) => (
+      setResult(v.department)
+  ))};
+
+  toast.success("Found Department for Selected Employee! ", {
+    theme:"colored"
+  });
+  }
+
+  const checkPromotion = () => {
+    checkPosition();
+
+    if (result === "Entry") {
+      setResult("The Next Promotion is Mid-Level")
+    } else if (result === "Mid") {
+      setResult("The Next Promotion is Senior-Level")
+    } else {
+      setResult("Currently Senior-Level Which is The Highest Level")
+    }
+
+  toast.success("Found Promotion for Selected Employee! ", {
+    theme:"colored"
+    });
+  }
 
   const handleSaveNote = () => {
     setSavedNotes([...savedNotes, note])
@@ -117,7 +146,7 @@ function Voice(userId) {
               <p>{note}</p>
             </div>
             <button className="btn-voice" onClick={handleSaveNote} disabled={!note}>
-              Save Input
+              Confirm Input
             </button> 
             <button className="btn-voice" onClick={() => setIsListening(prevState => !prevState)}>
               Start/Stop
